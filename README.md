@@ -1,0 +1,2 @@
+# animatedRidgelineplots
+Animated ridgelineplots showing temperature variations
