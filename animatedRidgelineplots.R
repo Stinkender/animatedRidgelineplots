@@ -1,3 +1,4 @@
+#Libraries
 library(gganimate)
 library(ggridges)
 library(wesanderson) #For the colour palette
@@ -18,8 +19,8 @@ tempsKaisis$Kk <-  replace(tempsKaisis$Kk, tempsKaisis$Kk == 2, "Helmikuu")
 tempsKaisis$Kk <-  replace(tempsKaisis$Kk, tempsKaisis$Kk == 3, "Maaliskuu")
 tempsKaisis$Kk <-  replace(tempsKaisis$Kk, tempsKaisis$Kk == 4, "Huhtikuu")
 tempsKaisis$Kk <-  replace(tempsKaisis$Kk, tempsKaisis$Kk == 5, "Toukokuu")
-tempsKaisis$Kk <-  replace(tempsKaisis$Kk, tempsKaisis$Kk == 6, "Kesäkuu")
-tempsKaisis$Kk <-  replace(tempsKaisis$Kk, tempsKaisis$Kk == 7, "Heinäkuu")
+tempsKaisis$Kk <-  replace(tempsKaisis$Kk, tempsKaisis$Kk == 6, "KesÃ¤kuu")
+tempsKaisis$Kk <-  replace(tempsKaisis$Kk, tempsKaisis$Kk == 7, "HeinÃ¤kuu")
 tempsKaisis$Kk <-  replace(tempsKaisis$Kk, tempsKaisis$Kk == 8, "Elokuu")
 tempsKaisis$Kk <-  replace(tempsKaisis$Kk, tempsKaisis$Kk == 9, "Syyskuu")
 tempsKaisis$Kk <-  replace(tempsKaisis$Kk, tempsKaisis$Kk == 10, "Lokakuu")
@@ -27,13 +28,13 @@ tempsKaisis$Kk <-  replace(tempsKaisis$Kk, tempsKaisis$Kk == 11, "Marraskuu")
 tempsKaisis$Kk <-  replace(tempsKaisis$Kk, tempsKaisis$Kk == 12, "Joulukuu")
 
 #Sort by month, not sure if this is needed
-tempsKaisis$Kk <- factor(tempsKaisis$Kk, levels = c("Joulukuu", "Marraskuu", "Lokakuu", "Syyskuu", "Elokuu", "Heinäkuu", "Kesäkuu", "Toukokuu", "Huhtikuu","Maaliskuu", "Helmikuu", "Tammikuu"))
+tempsKaisis$Kk <- factor(tempsKaisis$Kk, levels = c("Joulukuu", "Marraskuu", "Lokakuu", "Syyskuu", "Elokuu", "HeinÃ¤kuu", "KesÃ¤kuu", "Toukokuu", "Huhtikuu","Maaliskuu", "Helmikuu", "Tammikuu"))
 
 #Make the plot  
 p <- ggplot(tempsKaisis, aes(x = `degC`, y = `Kk`, fill = ..x..)) +
     geom_density_ridges_gradient(scale = 1, rel_min_height = 0.0001, color = "#FEFEDF00", size = 0.1) +
-    scale_fill_gradientn(name = "Lämpötila (Celsius)",colours = pal) +
-    xlab("Lämpötila (Celsius)") +
+    scale_fill_gradientn(name = "LÃ¤mpÃ¶tila (Celsius)",colours = pal) +
+    xlab("LÃ¤mpÃ¶tila (Celsius)") +
     ylab("") +
     scale_x_continuous(breaks = c(-35,-30,-25,-20,-15,-10,-5,0,5,10,15,20,25,30,35), limits = c(-35,35)) +
     theme(
@@ -51,7 +52,7 @@ p <- ggplot(tempsKaisis, aes(x = `degC`, y = `Kk`, fill = ..x..)) +
       axis.ticks.y=element_blank(),
       axis.title.x = element_text(colour = '#D9CB9E', size = 10)
     )+
-    labs(title = 'Ilman lämpötila Helsingissä (Kaisaniemi), {frame_time}', x = 'Lähde: Ilmatieteen laitos', y = '') +
+    labs(title = 'Ilman lÃ¤mpÃ¶tila HelsingissÃ¤ (Kaisaniemi), {frame_time}', x = 'LÃ¤hde: Ilmatieteen laitos', y = '') +
     transition_time(Vuosi)+
     ease_aes('cubic-in-out')
 
